@@ -1,0 +1,696 @@
+{
+	"info": {
+		"_postman_id": "04b9cbf1-8ea8-4ae7-8e33-80ba8f150847",
+		"name": "API HW_1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Task 0",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// написать автотесты на блок «Статусы ответов». Статусы 200 и 400 тестировать не надо, они не должен встречаться. На каждый статус пишем 2 теста: один нормальный, второй сломан (проверка того, что тест действительно что-то делает. Как в лекции тренер проверял каждый тест)\r",
+							"\r",
+							"// 1. 230 — никого не нашли по запросу, пустой отве\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://users.bugred.ru/tasks/rest/doregister",
+					"protocol": "http",
+					"host": [
+						"users",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"tasks",
+						"rest",
+						"doregister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Task 1 Register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Регистрируем нового пользователя\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "sdfsfs@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "wee3 ferwf",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://users.bugred.ru/tasks/rest/doregister",
+					"protocol": "http",
+					"host": [
+						"users",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"tasks",
+						"rest",
+						"doregister"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TASK 2/ 231 code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Статус код 231 — найден 1 юзер\r",
+							"pm.test(\"Status code is 231\", function () {\r",
+							"    pm.response.to.have.status(231);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "query",
+							"value": "wee3 ferwf",
+							"type": "text"
+						},
+						{
+							"key": "query",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://users.bugred.ru/tasks/rest/magicsearch",
+					"protocol": "http",
+					"host": [
+						"users",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"tasks",
+						"rest",
+						"magicsearch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Task 3/ 232 code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Статус код 232 — найдено больше 1 юзера (но без компаний)\r",
+							"pm.test(\"Status code is 232\", function () {\r",
+							"    pm.response.to.have.status(232);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "query",
+							"value": "Tima",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://users.bugred.ru/tasks/rest/magicsearch",
+					"protocol": "http",
+					"host": [
+						"users",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"tasks",
+						"rest",
+						"magicsearch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Task 4/ 230 code",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 230\", function () {\r",
+							"    pm.response.to.have.status(230);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "query",
+							"value": "zaq",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://users.bugred.ru/tasks/rest/magicsearch",
+					"protocol": "http",
+					"host": [
+						"users",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"tasks",
+						"rest",
+						"magicsearch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Task 5/  Create company",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Регистрируем новую компанию"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"company_name\": \"Pherly\",\r\n  \"company_type\": \"ООО\",\r\n  \"company_users\": [\"timmredo12@gmail.com\"],\r\n  \"email_owner\": \"timmredo1@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://users.bugred.ru/tasks/rest/createcompany",
+					"protocol": "http",
+					"host": [
+						"users",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"tasks",
+						"rest",
+						"createcompany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Task 6/ 233",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Статус код 233 — найдена 1 компания\r",
+							"pm.test(\"Status code is 233\", function () {\r",
+							"    pm.response.to.have.status(233);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "query",
+							"value": "Pherly",
+							"type": "text"
+						},
+						{
+							"key": "partyType",
+							"value": "COMPANY",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://users.bugred.ru/tasks/rest/magicsearch",
+					"protocol": "http",
+					"host": [
+						"users",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"tasks",
+						"rest",
+						"magicsearch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Task 7/ 234",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Cтатус код 234 — найдено больше 1 компании (но без юзеров)\r",
+							"pm.test(\"Status code is 234\", function () {\r",
+							"    pm.response.to.have.status(234);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "query",
+							"value": "Pherly",
+							"type": "text"
+						},
+						{
+							"key": "partyType",
+							"value": "COMPANY",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://users.bugred.ru/tasks/rest/magicsearch",
+					"protocol": "http",
+					"host": [
+						"users",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"tasks",
+						"rest",
+						"magicsearch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Task 8/ 235",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Cтатус код 235 — найдены как юзеры, так и компании\r",
+							"pm.test(\"Status code is 235\", function () {\r",
+							"    pm.response.to.have.status(235);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "query",
+							"value": "Tim",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://users.bugred.ru/tasks/rest/magicsearch",
+					"protocol": "http",
+					"host": [
+						"users",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"tasks",
+						"rest",
+						"magicsearch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Task 9/ 455",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Cтатус код 455 — не указан параметр query в запросе. Body сообщения — “Не найден обязательный параметр query”\r",
+							"\r",
+							"pm.test(\"Status code is 455\", function () {\r",
+							"    pm.response.to.have.status(455);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "query",
+							"value": "Tim",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://users.bugred.ru/tasks/rest/magicsearch",
+					"protocol": "http",
+					"host": [
+						"users",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"tasks",
+						"rest",
+						"magicsearch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Task 10/ 456",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Cтатус код 456 — длина запроса выше 1000 символов. Текст ошибки — “Длина запроса не должна превышать 1000 символов”\r",
+							"pm.test(\"Status code is 456\", function () {\r",
+							"    pm.response.to.have.status(456);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "query",
+							"value": "* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```* `http://users.bugred.ru/tasks/rest/magicsearch` метод: `POST`.\n* Входные параметры: query\n```js\npm.test(\"Status code is 235\", function () {\n    pm.response.to.have.status(235);\n});\n```",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://users.bugred.ru/tasks/rest/magicsearch",
+					"protocol": "http",
+					"host": [
+						"users",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"tasks",
+						"rest",
+						"magicsearch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Task 11/ 457",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Cтатус код 457 — неправильно задан partyType (значение не из доступного списка выбора). Текст ошибки — “Параметр partyType может принимать только значения: ALL, USER, COMPANY”\r",
+							"\r",
+							"pm.test(\"Status code is 457\", function () {\r",
+							"    pm.response.to.have.status(457);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "query",
+							"value": "Tima",
+							"type": "text"
+						},
+						{
+							"key": "partyType",
+							"value": "partyType(name)",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://users.bugred.ru/tasks/rest/magicsearch",
+					"protocol": "http",
+					"host": [
+						"users",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"tasks",
+						"rest",
+						"magicsearch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Task 12/ 458",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// 458 — неправильно задан параметр taskStatus (не из списка выбора значение). Текст ошибки — “Параметр taskStatus может принимать только значения: ALL, ACTUAL, COMPLETE, FAIL”\r",
+							"\r",
+							"pm.test(\"Status code is 458\", function () {\r",
+							"    pm.response.to.have.status(458);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "query",
+							"value": "Tima",
+							"type": "text"
+						},
+						{
+							"key": "taskStatus",
+							"value": "partyType(name)",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://users.bugred.ru/tasks/rest/magicsearch",
+					"protocol": "http",
+					"host": [
+						"users",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"tasks",
+						"rest",
+						"magicsearch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Task 13/ 459",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Cтатус код 459 — неправильно задан параметр include (не из списка выбора значение). Текст ошибки — “Параметр include может принимать только значения: ALL, USER, COMPANY, TASK, WHY”\r",
+							"\r",
+							"pm.test(\"Status code is 459\", function () {\r",
+							"    pm.response.to.have.status(459);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "query",
+							"value": "Tima",
+							"type": "text"
+						},
+						{
+							"key": "include",
+							"value": "partyType(name)",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://users.bugred.ru/tasks/rest/magicsearch",
+					"protocol": "http",
+					"host": [
+						"users",
+						"bugred",
+						"ru"
+					],
+					"path": [
+						"tasks",
+						"rest",
+						"magicsearch"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
